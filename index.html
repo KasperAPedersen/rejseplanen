@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+
+<script>
+    (async () => {
+        let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
+        let inp = "Ahorn Alle 5";
+
+        let res = await fetch(`${base}location/?input=${inp}&format=json`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if(!res.ok) {
+            console.error("Failed to fetch location");
+            return;
+        }
+
+        let data = await res.json();
+        console.log(data);
+    })();
+</script>
+</body>
+
+</html>
