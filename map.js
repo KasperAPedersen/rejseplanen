@@ -46,14 +46,28 @@ let getDirections = async (origin, destination) => {
 
 let showTextDirections = (directions) => {
     let steps = directions.routes[0].legs[0].steps;
+    let tripContainer = document.getElementById('trip');
+    tripContainer.innerHTML = "";
+    tripContainer.style.display = "block";
 
     for(let i = 0; i < steps.length; i++) {
-        console.log(steps[i]);
         let instruction = steps[i].instructions;
-        let type = steps[i].travel_mode;
-        if(type === "TRANSIT") {
-            instruction = `[${steps[i].transit.departure_time.text}] ${steps[i].transit.line.name} ${instruction}`;
+        let time;
+
+        switch(steps[i].travel_mode) {
+            case 'TRANSIT':
+                time = `${steps[i].transit.line.name} ${steps[i].transit.departure_time.text}`;
+                break;
+            case 'WALKING':
+                time = `${steps[i].distance.text} (${steps[i].duration.text})`;
+                break;
         }
-        console.log(instruction);
+
+        let elem = document.createElement('div');
+        elem.innerHTML = `
+            <p>${instruction}</p><p>${time}</p>
+            <div class="clearFix"></div>
+        `;
+        tripContainer.appendChild(elem);
     }
 }
