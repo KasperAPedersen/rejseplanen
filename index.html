@@ -1,30 +1,39 @@
 <html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <header>
+            <h1>Rejseplanen</h1>
+            <nav>
+                <a href="#">Hjælp</a>
+                <a href="#">Om</a>
+                <a href="#">Kontakt</a>
+            </nav>
+            <div class="clearFix"></div>
+        </header>
 
-<script>
-    (async () => {
-        let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
-        let inp = "Ahorn Alle 5";
-
-        let res = await fetch(`${base}location/?input=${inp}&format=json`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-
-        if(!res.ok) {
-            console.error("Failed to fetch location");
-            return;
-        }
-
-        let data = await res.json();
-        console.log(data);
-    })();
-</script>
-</body>
-
+        <main>
+            <div>
+                <div>
+                    <h2>Find din rejse</h2>
+                    <form id="search">
+                        <input type="text" id="from" name="from" placeholder="Fra">
+                        <div id="fromContainer"></div>
+                        <input type="text" id="to" name="to" placeholder="Til">
+                        <div id="toContainer"></div>
+                        <button type="submit">Søg</button>
+                    </form>
+                </div>
+                <div id="trip"><p>a</p></div>
+            </div>
+            <div>
+                <div id="googleMap"></div>
+            </div>
+        </main>
+    <script src="index.js"></script>
+    <script src="map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+    </body>
 </html>
