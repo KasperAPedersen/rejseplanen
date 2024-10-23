@@ -1,0 +1,22 @@
+@media only screen and (max-width: 425px) {
+    * {
+        overflow: hidden;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    #googleMap {
+        display: none;
+    }
+
+    main>div:first-of-type {
+        width: calc(100% - 30px);
+        height: calc(100% - 120px);
+    }
+
+    #fromContainer, #toContainer {
+        font-size: 0.8em;
+    }
+}

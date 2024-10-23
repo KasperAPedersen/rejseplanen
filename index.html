@@ -1,32 +1,41 @@
-<html>
+<html lang="da">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rejseplanlæggeren</title>
+
+        <script src="https://kit.fontawesome.com/d7cb81324e.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 425px)">
+
+
     </head>
     <body>
         <header>
-            <h1>Rejseplanen</h1>
+            <div class="swp">
+                <h1>Rejseplanlæggeren</h1>
+            </div>
         </header>
 
-        <main>
-            <div>
+        <div class="swp">
+            <main>
                 <div>
-                    <h2>Find din rejse</h2>
-                    <form id="search">
-                        <input type="text" id="from" name="from" placeholder="Fra">
-                        <div id="fromContainer"></div>
-                        <div id="viaContainer"></div>
-                        <input type="text" id="to" name="to" placeholder="Til">
-                        <div id="toContainer"></div>
-                        <button type="submit">Søg</button>
-                    </form>
+                    <div>
+                        <h2>Find din rejse</h2>
+                        <form id="search">
+                            <input type="text" id="from" name="from" placeholder="Fra">
+                            <div id="fromContainer"></div>
+                            <input type="text" id="to" name="to" placeholder="Til">
+                            <div id="toContainer"></div>
+                            <button type="submit">Søg</button>
+                        </form>
+                    </div>
+                    <div id="trip"></div>
                 </div>
-                <div id="trip"></div>
-            </div>
-            <div>
-                <div id="googleMap"></div>
-            </div>
-        </main>
+                <div>
+                    <div id="googleMap"></div>
+                </div>
+            </main>
+        </div>
     <script src="index.js"></script>
     <script src="map.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaK3xkHj8B3gVVZa0LfKi57gKHxEE0tKo&callback=initMap"></script>

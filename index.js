@@ -69,3 +69,13 @@ let getData = async (inp) => {
 let getPlaces = async (data) => {
     return data.LocationList.CoordLocation;
 }
+
+let hideMap = (e) => {
+    document.getElementById('googleMap').style.display = "none";
+    e.style.display = "none";
+}
+
+let showMap = () => {
+    document.getElementById('googleMap').style.display = "block";
+    document.getElementById('closeBtn').style.display = "block";
+}
