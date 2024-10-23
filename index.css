@@ -30,6 +30,11 @@
     display: none;
 }
 
+.active {
+    background-color: #000C2B;
+    color: #fff;
+}
+
 /* header */
 header {
     background-color: #000C2B;
@@ -62,13 +67,34 @@ main>div:first-of-type {
 
 main>div:first-of-type>div:first-of-type {
     margin: 15px;
-    padding: 15px;
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 h2 {
-    margin-bottom: 15px;
+    cursor: pointer;
+    padding: 15px 0;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+h2:hover {
+    background-color: #000C2B;
+    color: #fff;
+}
+
+h2:nth-of-type(1) {
+    width: 50%;
+    float: left;
+}
+
+h2:nth-of-type(2) {
+    width: 50%;
+    float: right;
+}
+
+#departures {
+    display: none;
 }
 
 input {
@@ -95,6 +121,10 @@ button:hover {
     background-color: #000C2BE4;
 }
 
+form {
+    padding: 15px;
+}
+
 main>div:first-of-type>>div:first-of-type>form>input {
     width: 100%;
     padding: 5px 15px;
@@ -103,7 +133,7 @@ main>div:first-of-type>>div:first-of-type>form>input {
     border-left: 2px solid red;
 }
 
-#fromContainer, #toContainer {
+#fromContainer, #toContainer, #stationContainer {
     max-height: 275px;
     overflow-y: scroll;
 }
@@ -134,6 +164,40 @@ main>div:first-of-type>>div:first-of-type>form>input {
 }
 
 #trip>div>p:last-of-type {
+    float: right;
+    width: 40%;
+    text-align: right;
+}
+
+/* departure time */
+#departuresTable {
+    margin: 15px;
+    padding: 15px;
+    width: 100%;
+    max-height: 70%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: none;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#departuresTable>div {
+    margin-bottom: 15px;
+}
+
+#departuresTable>div>p, #departuresTable>div>div:first-of-type {
+    font-size: 0.8em;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+#departuresTable>div>div:first-of-type {
+    float: left;
+    width: 60%;
+    border-left: 2px solid #000C2B;
+}
+
+#departuresTable>div>p:last-of-type {
     float: right;
     width: 40%;
     text-align: right;

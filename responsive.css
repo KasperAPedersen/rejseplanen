@@ -1,7 +1,5 @@
 @media only screen and (max-width: 425px) {
-    * {
-        overflow: hidden;
-    }
+
 
     header h1 {
         font-size: 1.6em;

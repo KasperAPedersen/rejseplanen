@@ -12,7 +12,7 @@ function initMap() {
     directionsRenderer.setMap(map);
 }
 
-document.getElementById('search').addEventListener('submit', async (e) => {
+document.getElementById('submitSearch').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     try {

@@ -20,16 +20,28 @@
             <main>
                 <div>
                     <div>
-                        <h2>Find din rejse</h2>
-                        <form id="search">
-                            <input type="text" id="from" name="from" placeholder="Fra">
-                            <div id="fromContainer"></div>
-                            <input type="text" id="to" name="to" placeholder="Til">
-                            <div id="toContainer"></div>
-                            <button type="submit">Søg</button>
-                        </form>
+                        <h2 class="active" onclick="showSearch(this);">Find din rejse</h2>
+                        <h2 onclick="showDepartures(this);">Afgangstavler</h2>
+                        <div id="search">
+                            <form id="submitSearch">
+                                <input type="text" id="from" placeholder="Fra">
+                                <div id="fromContainer"></div>
+                                <input type="text" id="to" placeholder="Til">
+                                <div id="toContainer"></div>
+                                <button type="submit">Søg</button>
+                            </form>
+                        </div>
+                        <div id="departures">
+                            <form id="submitDepartures">
+                                <input type="text" id="station" placeholder="Station eller stoppested">
+                                <div id="stationContainer"></div>
+                                <button type="submit">Søg</button>
+                            </form>
+
+                        </div>
                     </div>
                     <div id="trip"></div>
+                    <div id="departuresTable"></div>
                 </div>
                 <div>
                     <div id="googleMap"></div>
