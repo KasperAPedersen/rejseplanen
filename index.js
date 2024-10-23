@@ -69,7 +69,3 @@ let getData = async (inp) => {
 let getPlaces = async (data) => {
     return data.LocationList.CoordLocation;
 }
-
-let getCoordinates = async (data) => {
-    return [data.LocationList.CoordLocation.x, data.LocationList.CoordLocation.y];
-}
