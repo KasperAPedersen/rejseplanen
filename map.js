@@ -18,7 +18,8 @@ document.getElementById('submitSearch').addEventListener('submit', async (e) => 
     try {
         const response = await getDirections(
             document.getElementById('from').value,
-            document.getElementById('to').value
+            document.getElementById('to').value,
+            document.getElementById('time').value
         );
 
         directionsRenderer.setDirections(response);
@@ -28,12 +29,16 @@ document.getElementById('submitSearch').addEventListener('submit', async (e) => 
     }
 });
 
-let getDirections = async (origin, destination) => {
+let getDirections = async (origin, destination, time) => {
     return new Promise((resolve, reject) => {
         directionsService.route({
             origin: origin,
             destination: destination,
             travelMode: google.maps.TravelMode["TRANSIT"]
+            /*drivingOptions: {
+                departureTime: new Date(Date.now()),
+                trafficModel: google.maps.TrafficModel.PESSIMISTIC
+            }*/
         }, (response, status) => {
             if (status === 'OK') {
                 resolve(response);

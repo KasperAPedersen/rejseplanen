@@ -83,7 +83,9 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
     let departures = await getDepartures(id);
 
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
+
         let departure = departures.DepartureBoard.Departure[i];
+
         let elem = document.createElement('div');
         elem.innerHTML = `
             <div><p>${departure.name}</p>
