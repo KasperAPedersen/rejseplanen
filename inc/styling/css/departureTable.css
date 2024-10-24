@@ -20,7 +20,6 @@
 #departuresTable>div>p, #departuresTable>div>div:first-of-type {
     font-size: 0.8em;
     padding: 15px;
-    margin-bottom: 15px;
 }
 
 #departuresTable>div>div:first-of-type {
@@ -38,4 +37,26 @@
 #stationContainer {
     max-height: 275px;
     overflow-y: scroll;
+}
+
+/* Departure time card */
+.DepartureTimeCard {
+    cursor: pointer;
+}
+
+.departureContainer {
+    padding: 0 15px;
+    color: rgba(0, 0, 0, 0.5);
+    max-height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: none;
+}
+
+.departureContainer p {
+    font-size: 12px;
+}
+
+.departureContainer span {
+    float: right;
 }
