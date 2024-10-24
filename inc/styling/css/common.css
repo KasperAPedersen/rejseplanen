@@ -42,3 +42,15 @@
     background-color: white;
     color: #000C2B;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #000C2B;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+}
