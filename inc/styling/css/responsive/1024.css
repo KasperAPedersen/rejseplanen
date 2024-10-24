@@ -1,0 +1,11 @@
+@media only screen and (max-width: 1024px) {
+    main>div {
+        width: 50%;
+        height: 100%;
+    }
+
+    #journeyTable {
+        max-height: calc(100% - 275px);
+        overflow: scroll;
+    }
+}
