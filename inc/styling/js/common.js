@@ -1,6 +1,6 @@
 let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
 
-const getData = async (inp) => {
+const getLocationData = async (inp) => {
     const res = await fetch(`${base}location?input=${inp}&format=json`);
     if (!res.ok) {
         console.error("Failed to fetch location");
@@ -8,6 +8,15 @@ const getData = async (inp) => {
     }
     return res.json();
 };
+
+const getJourneyData = async (ref) => {
+    const res = await fetch(ref);
+    if (!res.ok) {
+        console.error("Failed to fetch journey");
+        return;
+    }
+    return await res.json();
+}
 
 let setActiveTab = (e) => {
     document.querySelectorAll('h2').forEach(element => element.className = "navBtn");
@@ -18,7 +27,7 @@ let showDropDown = async (container, value, useStopLocation = false) => {
     let parent = document.getElementById(`${container}Container`);
 
     if (!value) return;
-    let places = await (await getData(value)).LocationList[useStopLocation ? 'StopLocation' : 'CoordLocation'] ?? [];
+    let places = await (await getLocationData(value)).LocationList[useStopLocation ? 'StopLocation' : 'CoordLocation'] ?? [];
 
     if (!places.length) return;
 
