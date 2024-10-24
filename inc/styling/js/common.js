@@ -9,7 +9,16 @@ const getLocationData = async (userInput) => {
     return res.json();
 };
 
-const getJourneyData = async (ref) => {
+let getDirectionData = async (from, to) => {
+    const res = await fetch(`${base}trip?originId=${from}&destId=${to}&format=json`);
+    if (!res.ok) {
+        console.error("Failed to fetch directions");
+        return;
+    }
+    return res.json();
+}
+
+const getTrainStopsData = async (ref) => {
     const res = await fetch(ref);
     if (!res.ok) {
         console.error("Failed to fetch journey");

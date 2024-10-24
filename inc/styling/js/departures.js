@@ -42,7 +42,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
             let departureContainer = elem.getElementsByClassName('departureContainer')[0];
             departureContainer.style.display = departureContainer.style.display === 'block' ? 'none' : 'block';
 
-            let stops = (await getJourneyData(departureRef.ref)).JourneyDetail.Stop;
+            let stops = (await getTrainStopsData(departureRef.ref)).JourneyDetail.Stop;
             for(let i = 0; i < stops.length; i++) {
                 let { name: stopName, depTime: stopDepartureTime, arrTime: stopArrivalTime } = stops[i];
                 console.log(stops[i]);

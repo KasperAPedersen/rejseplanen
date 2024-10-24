@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedReference
+
 const showSearch = e => {
     ['departures', 'journeyTable', 'departuresTable'].forEach(id => document.getElementById(id).style.display = "none");
     document.getElementById('search').style.display = "block";
@@ -25,7 +27,6 @@ document.getElementById('submitSearch').addEventListener('submit', async (event)
         }
 
         const directionsResponse = await getDirections(fromLocation, toLocation);
-
         directionsRenderer.setDirections(directionsResponse);
         showTextDirections(directionsResponse);
     } catch (error) {
