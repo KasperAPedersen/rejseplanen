@@ -1,13 +1,18 @@
+<!--suppress ALL -->
 <html lang="da">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rejseplanlæggeren</title>
+        <link rel="stylesheet" href="inc/styling/css/common.css">
+        <link rel="stylesheet" href="inc/styling/css/header.css">
+        <link rel="stylesheet" href="inc/styling/css/map.css">
+        <link rel="stylesheet" href="inc/styling/css/sidebarForm.css">
+        <link rel="stylesheet" href="inc/styling/css/departureTable.css">
+        <link rel="stylesheet" href="inc/styling/css/journeyTable.css">
 
-        <script src="https://kit.fontawesome.com/d7cb81324e.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="index.css">
-        <link rel="stylesheet" href="responsive.css" media="screen and (max-width: 425px)">
-
-
+        <link rel="stylesheet" href="inc/styling/css/responsive/768.css" media="screen and (max-width: 768px)">
+        <link rel="stylesheet" href="inc/styling/css/responsive/1024.css" media="screen and (max-width: 1024px)">
     </head>
     <body>
         <header>
@@ -15,42 +20,44 @@
                 <h1>Rejseplanlæggeren</h1>
             </div>
         </header>
-
-        <div class="swp">
-            <main>
+        <main>
+            <div>
                 <div>
-                    <div>
-                        <h2 class="active" onclick="showSearch(this);">Find din rejse</h2>
-                        <h2 onclick="showDepartures(this);">Afgangstavler</h2>
-                        <div id="search">
-                            <form id="submitSearch">
-                                <input type="time" id="time">
-                                <input type="text" id="from" placeholder="Fra">
-                                <div id="fromContainer"></div>
-                                <input type="text" id="to" placeholder="Til">
-                                <div id="toContainer"></div>
-                                <button type="submit">Søg</button>
-                            </form>
-                        </div>
-                        <div id="departures">
-                            <form id="submitDepartures">
-                                <input type="text" id="station" placeholder="Station eller stoppested">
-                                <div id="stationContainer"></div>
-                                <button type="submit">Søg</button>
-                            </form>
-
-                        </div>
+                    <h2 class="navBtn activeNavBtn" onclick="showSearch(this);">Find din rejse</h2>
+                    <h2 class="navBtn" onclick="showDepartures(this);">Afgangstavler</h2>
+                    <div class="clearFix"></div>
+                    <div id="search">
+                        <form id="submitSearch">
+                            <input type="time" id="time">
+                            <input type="text" id="from" placeholder="Fra">
+                            <div id="fromContainer" class="dropdownContainer"></div>
+                            <input type="text" id="to" placeholder="Til">
+                            <div id="toContainer" class="dropdownContainer"></div>
+                            <button type="submit">Søg</button>
+                            <div class="clearFix"></div>
+                        </form>
                     </div>
-                    <div id="trip"></div>
-                    <div id="departuresTable"></div>
+                    <div id="departures">
+                        <form id="submitDepartures">
+                            <input type="text" id="station" placeholder="Station eller stoppested">
+                            <div id="stationContainer" class="dropdownContainer"></div>
+                            <button type="submit">Søg</button>
+                            <div class="clearFix"></div>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <div id="googleMap"></div>
-                </div>
-            </main>
-        </div>
-    <script src="index.js"></script>
-    <script src="map.js"></script>
+                <div class="clearFix"></div>
+                <div id="journeyTable"></div>
+                <div id="departuresTable"></div>
+            </div>
+            <div>
+                <div id="googleMap"></div>
+            </div>
+        </main>
+        <script src="inc/styling/js/common.js"></script>
+        <script src="inc/styling/js/departures.js"></script>
+        <script src="inc/styling/js/map.js"></script>
+        <script src="inc/styling/js/journey.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaK3xkHj8B3gVVZa0LfKi57gKHxEE0tKo&callback=initMap"></script>
     </body>
 </html>
