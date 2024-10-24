@@ -24,6 +24,8 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
 
     const id = data.LocationList.StopLocation[0].id;
     const departures = await getDepartures(id);
+    console.log(departures);
+
 
     if (!departures.DepartureBoard.Departure) {
         window.alert('No departures found');
@@ -32,6 +34,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
 
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
         let departure = departures.DepartureBoard.Departure[i];
+        let {name: departureName, direction: departureDirection, time: departureTime, rtTime: departureDelayedTime, JourneyDetailRef: departureRef} = departure;
 
         const elem = document.createElement('div');
         elem.className = "DepartureTimeCard";
@@ -39,23 +42,24 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
             let departureContainer = elem.getElementsByClassName('departureContainer')[0];
             departureContainer.style.display = departureContainer.style.display === 'block' ? 'none' : 'block';
 
-            let stops = (await getJourneyData(departure.JourneyDetailRef.ref)).JourneyDetail.Stop;
-
+            let stops = (await getJourneyData(departureRef.ref)).JourneyDetail.Stop;
             for(let i = 0; i < stops.length; i++) {
+                let { name: stopName, depTime: stopDepartureTime, arrTime: stopArrivalTime } = stops[i];
+                console.log(stops[i]);
                 let stopElement = document.createElement('p');
-                stopElement.innerHTML = `<p>${stops[i].name}<span>${stops[i].depTime ?? stops[i].arrTime ?? ""}</span></p>`;
+                stopElement.innerHTML = `<p>${stopName}<span>${stopDepartureTime ?? stopArrivalTime ?? ""}</span></p>`;
                 departureContainer.appendChild(stopElement);
             }
         };
         elem.innerHTML = `
-            <div><p>${departure.name}</p>
-            <p>${departure.direction}</p></div>
-            <p>${departure.time}</p>
+            <div><p>${departureName}</p>
+            <p>${departureDirection}</p></div>
+            <p>${departureTime} ${(departureDelayedTime ? `<span>(${departureDelayedTime})</span>` : "")}</p>
             <div class="clearFix"></div>
             <div class="departureContainer"></div>
         `;
         container.appendChild(elem);
-    };
+    }
 
     container.style.display = 'block';
 });

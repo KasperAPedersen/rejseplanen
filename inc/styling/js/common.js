@@ -1,7 +1,7 @@
 let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
 
-const getLocationData = async (inp) => {
-    const res = await fetch(`${base}location?input=${inp}&format=json`);
+const getLocationData = async (userInput) => {
+    const res = await fetch(`${base}location?input=${userInput}&format=json`);
     if (!res.ok) {
         console.error("Failed to fetch location");
         return;

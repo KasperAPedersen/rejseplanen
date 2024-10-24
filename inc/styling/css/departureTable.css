@@ -44,6 +44,10 @@
     cursor: pointer;
 }
 
+.DepartureTimeCard>p>span {
+    color: red;
+}
+
 .departureContainer {
     padding: 0 15px;
     color: rgba(0, 0, 0, 0.5);
