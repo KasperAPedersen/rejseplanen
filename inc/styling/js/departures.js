@@ -35,7 +35,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
         let departure = departures.DepartureBoard.Departure[i];
         let {name: departureName, direction: departureDirection, time: departureTime, rtTime: departureDelayedTime, JourneyDetailRef: departureRef} = departure;
-
+        let icon = getIcon(departure.type);
         const elem = document.createElement('div');
         elem.className = "DepartureTimeCard";
         elem.onclick = async () => {
@@ -52,7 +52,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
             }
         };
         elem.innerHTML = `
-            <div><p>${departureName}</p>
+            <div><p>${icon} ${departureName}</p>
             <p>${departureDirection}</p></div>
             <p>${departureTime} ${(departureDelayedTime ? `<span>(${departureDelayedTime})</span>` : "")}</p>
             <div class="clearFix"></div>
