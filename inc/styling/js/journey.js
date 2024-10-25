@@ -45,6 +45,7 @@ let showTextDirections = (directions) => {
     steps.forEach(step => {
         let { instructions: departureInstruction, travel_mode } = step;
         let arrivalInstruction = "", arrivalTime = "", departureTime = "";
+        let icon = getIcon(travel_mode);
 
         if (travel_mode === 'TRANSIT') {
             let { arrival_time, departure_time, arrival_stop, line } = step.transit;
@@ -52,6 +53,7 @@ let showTextDirections = (directions) => {
             departureTime = departure_time.text;
             arrivalInstruction = arrival_stop.name;
             departureInstruction = `${line.name} ${departureInstruction}`;
+            icon = getIcon(line.vehicle.name);
         } else if (travel_mode === 'WALKING') {
             departureTime = step.duration.text;
         }
@@ -59,7 +61,7 @@ let showTextDirections = (directions) => {
         let elem = document.createElement('div');
         elem.innerHTML = `
             <label>Afgang:</label>
-            <p>${departureInstruction} <span>${departureTime}</span></p>
+            <p>${icon} ${departureInstruction} <span>${departureTime}</span></p>
             ${travel_mode === 'TRANSIT' ? `<label>Ankomst:</label><p>${arrivalInstruction} <span>${arrivalTime}</span></p>` : ""}
             <div class="clearFix"></div>
         `;

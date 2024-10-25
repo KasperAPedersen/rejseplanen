@@ -71,3 +71,16 @@ let setDate = (date, day) => {
     date.setDate(dayOfMonth);
     return date;
 }
+
+let getIcon = (mode) => {
+    switch(mode.toUpperCase()) {
+        case 'WALKING':
+            return '<i class="fas fa-walking"></i>';
+        case 'BUS':
+            return '<i class="fas fa-bus"></i>';
+        case 'TOG':
+            return '<i class="fas fa-train"></i>';
+        default:
+            return '';
+    }
+}
