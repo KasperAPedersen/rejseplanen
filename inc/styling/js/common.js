@@ -56,3 +56,18 @@ let showDropDown = async (container, value, useStopLocation = false) => {
         parent.appendChild(elem);
     });
 }
+
+let setTime = (date, time) => {
+    let [hours, minutes] = time.split(':').map(Number);
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    return date;
+}
+
+let setDate = (date, day) => {
+    let [year, month, dayOfMonth] = day.split('-').map(Number);
+    date.setFullYear(year);
+    date.setMonth(month - 1);
+    date.setDate(dayOfMonth);
+    return date;
+}
