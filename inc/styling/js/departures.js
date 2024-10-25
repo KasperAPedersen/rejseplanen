@@ -33,8 +33,10 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
     }
 
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
+
         let departure = departures.DepartureBoard.Departure[i];
-        let {name: departureName, direction: departureDirection, time: departureTime, rtTime: departureDelayedTime, JourneyDetailRef: departureRef} = departure;
+
+        let {name: departureName, direction: departureDirection, time: departureTime, rtTime: departureDelayedTime, JourneyDetailRef: departureRef, rtTrack: departureTrack} = departure;
         let icon = getIcon(departure.type);
         const elem = document.createElement('div');
         elem.className = "DepartureTimeCard";
@@ -54,7 +56,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
         elem.innerHTML = `
             <div><p>${icon} ${departureName}</p>
             <p>${departureDirection}</p></div>
-            <p>${departureTime} ${(departureDelayedTime ? `<span>(${departureDelayedTime})</span>` : "")}</p>
+            <p>${departureTime} ${(departureDelayedTime ? `<span>(${departureDelayedTime})</span>` : "")}<br>${departureTrack ? `Spor ${departureTrack}` : ""}</p>
             <div class="clearFix"></div>
             <div class="departureContainer"></div>
         `;
