@@ -13,6 +13,8 @@ document.getElementById('station').addEventListener('input', async (e) => {
 document.getElementById('submitDepartures').addEventListener('submit', async (e) => {
     e.preventDefault();
     const value = document.getElementById('station').value;
+    let time = document.getElementById('stationTime').value;
+
     const container = document.getElementById('departuresTable');
     container.innerHTML = "";
 
@@ -23,9 +25,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
     }
 
     const id = data.LocationList.StopLocation[0].id;
-    const departures = await getDepartures(id);
-    console.log(departures);
-
+    const departures = await getDepartures(id, time);
 
     if (!departures.DepartureBoard.Departure) {
         window.alert('No departures found');
@@ -45,7 +45,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
             let stops = (await getTrainStopsData(departureRef.ref)).JourneyDetail.Stop;
             for(let i = 0; i < stops.length; i++) {
                 let { name: stopName, depTime: stopDepartureTime, arrTime: stopArrivalTime } = stops[i];
-                console.log(stops[i]);
+
                 let stopElement = document.createElement('p');
                 stopElement.innerHTML = `<p>${stopName}<span>${stopDepartureTime ?? stopArrivalTime ?? ""}</span></p>`;
                 departureContainer.appendChild(stopElement);
@@ -64,8 +64,8 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
     container.style.display = 'block';
 });
 
-const getDepartures = async (id) => {
-    const res = await fetch(`${base}departureBoard?id=${id}&useTog=1&useBus=1&format=json`);
+const getDepartures = async (id, time) => {
+    const res = await fetch(`${base}departureBoard?id=${id}&time=${time}&useTog=1&useBus=1&format=json`);
     if (!res.ok) {
         console.error("Failed to fetch location");
         return;

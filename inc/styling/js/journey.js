@@ -20,13 +20,14 @@ document.getElementById('submitSearch').addEventListener('submit', async (event)
     try {
         const fromLocation = document.getElementById('from').value;
         const toLocation = document.getElementById('to').value;
-        const time = setDate(document.getElementById('time').value);
+        let date = setTime(new Date(), document.getElementById('time').value) || new Date();
+        date = setDate(date, document.getElementById('date').value);
+
         if (!fromLocation || !toLocation) {
             window.alert('Please enter both origin and destination.');
             return;
         }
-        const directionsResponse = await getDirections(fromLocation, toLocation, time);
-        console.log(directionsResponse);
+        const directionsResponse = await getDirections(fromLocation, toLocation, date);
 
         directionsRenderer.setDirections(directionsResponse);
         showTextDirections(directionsResponse);
@@ -66,19 +67,19 @@ let showTextDirections = (directions) => {
     });
 }
 
-const getDirections = async (origin, destination, time) => {
+const getDirections = async (origin, destination, date) => {
     return new Promise((resolve, reject) => {
         if (!directionsService) {
             reject('Directions service is not initialized.');
             return;
         }
-        console.log(time);
+
         directionsService.route({
             origin: origin,
             destination: destination,
             travelMode: google.maps.TravelMode.TRANSIT,
             transitOptions: {
-                departureTime: time
+                departureTime: date
             }
         }, (response, status) => {
             if (status === 'OK') {
@@ -88,12 +89,4 @@ const getDirections = async (origin, destination, time) => {
             }
         });
     });
-}
-
-let setDate = (time) => {
-    let [hours, minutes] = time.split(':').map(Number);
-    let date = new Date();
-    date.setHours(hours);
-    date.setMinutes(minutes);
-    return date;
 }
