@@ -20,8 +20,12 @@ document.getElementById('submitSearch').addEventListener('submit', async (event)
     try {
         const fromLocation = document.getElementById('from').value;
         const toLocation = document.getElementById('to').value;
-        let date = setTime(new Date(), document.getElementById('time').value) || new Date();
-        date = setDate(date, document.getElementById('date').value);
+        const dateInput = document.getElementById('date').value;
+        const timeInput = document.getElementById('time').value;
+
+        let date = new Date();
+        if(timeInput) date = setTime(date, timeInput);
+        if(dateInput) date = setDate(date, dateInput);
 
         if (!fromLocation || !toLocation) {
             window.alert('Please enter both origin and destination.');
