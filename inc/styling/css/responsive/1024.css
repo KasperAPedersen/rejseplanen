@@ -5,7 +5,6 @@
     }
 
     #journeyTable {
-        max-height: calc(100% - 275px);
-        overflow: scroll;
+        max-height: calc(60% - 30px);
     }
 }
