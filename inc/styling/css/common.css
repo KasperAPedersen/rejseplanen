@@ -6,6 +6,10 @@
     word-break: break-word;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 .clearFix {
     clear: both;
 }
