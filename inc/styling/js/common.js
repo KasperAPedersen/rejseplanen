@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedReference
+
 let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
 
 const getLocationData = async (userInput) => {
@@ -77,8 +79,13 @@ let getIcon = (mode) => {
         case 'WALKING':
             return '<i class="fas fa-walking"></i>';
         case 'BUS':
+        case 'EXB':
             return '<i class="fas fa-bus"></i>';
         case 'TOG':
+        case 'REG':
+        case 'IC':
+        case 'S':
+        case 'LYN':
             return '<i class="fas fa-train"></i>';
         default:
             return '';
