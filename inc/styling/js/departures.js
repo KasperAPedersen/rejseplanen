@@ -32,10 +32,12 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
         return;
     }
 
+    // --
+
+    // --
+
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
-
         let departure = departures.DepartureBoard.Departure[i];
-
         let {name: departureName, direction: departureDirection, time: departureTime, rtTime: departureDelayedTime, JourneyDetailRef: departureRef, rtTrack: departureTrack} = departure;
         let icon = getIcon(departure.type);
         const elem = document.createElement('div');
@@ -43,6 +45,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
         elem.onclick = async () => {
             let departureContainer = elem.getElementsByClassName('departureContainer')[0];
             departureContainer.style.display = departureContainer.style.display === 'block' ? 'none' : 'block';
+            departureContainer.innerHTML = "";
 
             let stops = (await getTrainStopsData(departureRef.ref)).JourneyDetail.Stop;
             for(let i = 0; i < stops.length; i++) {
