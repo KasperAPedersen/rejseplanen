@@ -5,7 +5,6 @@ let position = {lat: 55.5003231, lng: 11.6258972};
 
 async function initMap() {
     const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
 
     map = new Map(document.getElementById('googleMap'), {
         center: position,
