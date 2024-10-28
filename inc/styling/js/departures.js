@@ -12,10 +12,19 @@ document.getElementById('station').addEventListener('input', async (e) => {
 
 document.getElementById('submitDepartures').addEventListener('submit', async (e) => {
     e.preventDefault();
+    resetMap();
+
+
     const value = document.getElementById('station').value;
     let time = document.getElementById('stationTime').value;
-
     const container = document.getElementById('departuresTable');
+
+    if(!value) {
+        container.style.display = 'none';
+        window.alert('Please enter a station');
+        return;
+    }
+
     container.innerHTML = "";
 
     const data = await getLocationData(value);
@@ -34,6 +43,8 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
 
     // --
 
+    let coordinates = await geo(value);
+    await addMarker(coordinates);
     // --
 
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
