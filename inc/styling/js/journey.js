@@ -6,22 +6,22 @@ const showSearch = e => {
     setActiveTab(e);
 };
 
-document.getElementById('from').addEventListener('input', async (e) => {
-    await showDropDown('from', e.target.value);
+document.getElementById('searchFrom').addEventListener('input', async (e) => {
+    await showDropDown('searchFrom', e.target.value);
 });
 
-document.getElementById('to').addEventListener('input', async (e) => {
-    await showDropDown('to', e.target.value);
+document.getElementById('searchTo').addEventListener('input', async (e) => {
+    await showDropDown('searchTo', e.target.value);
 });
 
-document.getElementById('submitSearch').addEventListener('submit', async (event) => {
+document.getElementById('searchSubmit').addEventListener('submit', async (event) => {
     event.preventDefault();
 
     try {
-        const fromLocation = document.getElementById('from').value;
-        const toLocation = document.getElementById('to').value;
-        const dateInput = document.getElementById('date').value;
-        const timeInput = document.getElementById('time').value;
+        const fromLocation = document.getElementById('searchFrom').value;
+        const toLocation = document.getElementById('searchTo').value;
+        const dateInput = document.getElementById('searchDate').value;
+        const timeInput = document.getElementById('searchTime').value;
 
         let date = new Date();
         if(timeInput) date = setTime(date, timeInput);

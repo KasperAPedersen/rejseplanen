@@ -29,7 +29,7 @@ main>div:first-of-type>div:first-of-type {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-main>div:first-of-type>div:first-of-type form, main>div:first-of-type>div:first-of-type #submitSearch {
+main>div:first-of-type>div:first-of-type form, main>div:first-of-type>div:first-of-type #searchSubmit {
     padding: 15px;
 }
 
