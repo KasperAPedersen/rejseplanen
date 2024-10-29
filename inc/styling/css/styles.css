@@ -200,6 +200,10 @@ form button:hover {
     border-top: 1px solid var(--border-color);
 }
 
+span{
+    color: #333333;
+}
+
 @media (max-width: 768px) {
     main {
         flex-direction: column;
