@@ -1,5 +1,5 @@
 // noinspection JSUnresolvedReference
-
+let darkMode = false;
 let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
 
 const getLocationData = async (userInput) => {
@@ -31,7 +31,7 @@ const getTrainStopsData = async (ref) => {
 
 let setActiveTab = (e) => {
     document.querySelectorAll('h2').forEach(element => element.className = "navBtn");
-    e.className = "activeNavBtn navBtn";
+    e.className = `activeNavBtn navBtn ${darkMode ? 'darkMode' : ''}`;
 };
 
 let showDropDown = async (container, value, useStopLocation = false) => {
@@ -91,3 +91,12 @@ let getIcon = (mode) => {
             return '';
     }
 }
+
+let toggleDarkMode = () => {
+    darkMode = !darkMode;
+    let body = document.body;
+    body.classList.toggle('darkMode');
+    document.querySelectorAll('.navBtn.activeNavBtn').forEach(el => {
+        el.classList.toggle('darkMode');
+    });
+};

@@ -1,66 +1,60 @@
-<!--suppress ALL -->
+<!DOCTYPE html>
 <html lang="da">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rejseplanlæggeren</title>
-        <link rel="stylesheet" href="inc/styling/css/common.css">
-        <link rel="stylesheet" href="inc/styling/css/header.css">
-        <link rel="stylesheet" href="inc/styling/css/map.css">
-        <link rel="stylesheet" href="inc/styling/css/sidebarForm.css">
-        <link rel="stylesheet" href="inc/styling/css/departureTable.css">
-        <link rel="stylesheet" href="inc/styling/css/journeyTable.css">
-
-        <link rel="stylesheet" href="inc/styling/css/responsive/768.css" media="screen and (max-width: 768px)">
-        <link rel="stylesheet" href="inc/styling/css/responsive/1024.css" media="screen and (max-width: 1024px)">
-    </head>
-    <body>
-        <header>
-            <div class="swp">
-                <h1>Rejseplanlæggeren</h1>
-            </div>
-        </header>
-        <main>
-            <div>
-                <div>
-                    <h2 class="navBtn activeNavBtn" onclick="showSearch(this);">Find din rejse</h2>
-                    <h2 class="navBtn" onclick="showDepartures(this);">Afgangstavler</h2>
-                    <div class="clearFix"></div>
-                    <div id="search">
-                        <form id="searchSubmit">
-                            <input type="date" id="searchDate">
-                            <input type="time" id="searchTime">
-                            <input type="text" id="searchFrom" placeholder="Fra">
-                            <div id="searchFromContainer" class="dropdownContainer"></div>
-                            <input type="text" id="searchTo" placeholder="Til">
-                            <div id="searchToContainer" class="dropdownContainer"></div>
-                            <button type="submit">Søg</button>
-                            <div class="clearFix"></div>
-                        </form>
-                    </div>
-                    <div id="departures">
-                        <form id="submitDepartures">
-                            <input type="time" id="stationTime">
-                            <input type="text" id="station" placeholder="Station eller stoppested">
-                            <div id="stationContainer" class="dropdownContainer"></div>
-                            <button type="submit">Søg</button>
-                            <div class="clearFix"></div>
-                        </form>
-                    </div>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejseplanlæggeren</title>
+    <link rel="stylesheet" href="inc/styling/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d7cb81324e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <div class="swp">
+        <h1>Rejseplanlæggeren</h1>
+        <i class="fa fa-moon-o" aria-hidden="true" onclick="toggleDarkMode();"></i>
+        <div class="clearFix"></div>
+    </div>
+</header>
+<main>
+    <div class="sidebar">
+        <div class="nav-tabs">
+            <h2 class="navBtn activeNavBtn" onclick="showSearch(this);">Find din rejse</h2>
+            <h2 class="navBtn" onclick="showDepartures(this);">Afgangstavler</h2>
+            <div class="clearFix"></div>
+        </div>
+        <div id="search" class="tab-content active">
+            <form id="searchSubmit">
+                <input type="date" id="searchDate">
+                <input type="time" id="searchTime">
+                <input type="text" id="searchFrom" placeholder="Fra">
+                <div id="searchFromContainer" class="dropdownContainer"></div>
+                <input type="text" id="searchTo" placeholder="Til">
+                <div id="searchToContainer" class="dropdownContainer"></div>
+                <button type="submit">Søg</button>
                 <div class="clearFix"></div>
-                <div id="journeyTable"></div>
-                <div id="departuresTable"></div>
-            </div>
-            <div>
-                <div id="googleMap"></div>
-            </div>
-        </main>
-        <script src="inc/styling/js/common.js"></script>
-        <script src="inc/styling/js/departures.js"></script>
-        <script src="inc/styling/js/map.js"></script>
-        <script src="inc/styling/js/journey.js"></script>
-        <script src="https://kit.fontawesome.com/d7cb81324e.js" crossorigin="anonymous"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaK3xkHj8B3gVVZa0LfKi57gKHxEE0tKo&loading=async&callback=initMap"></script>
-    </body>
+            </form>
+        </div>
+        <div id="departures" class="tab-content">
+            <form id="submitDepartures">
+                <input type="time" id="stationTime">
+                <input type="text" id="station" placeholder="Station eller stoppested">
+                <div id="stationContainer" class="dropdownContainer"></div>
+                <button type="submit">Søg</button>
+                <div class="clearFix"></div>
+            </form>
+        </div>
+        <div id="journeyTable"></div>
+        <div id="departuresTable"></div>
+    </div>
+    <div class="map-container">
+        <div id="googleMap"></div>
+    </div>
+</main>
+<script src="inc/js/common.js"></script>
+<script src="inc/js/map.js"></script>
+<script src="inc/js/journey.js"></script>
+<script src="inc/js/departures.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYRTaShE43_LuuEsUarxa2BWiFOfjKNQQ&callback=initMap" async defer></script>
+</body>
 </html>
