@@ -22,7 +22,7 @@ let addMarker = async (location) => {
     let newMarker = new AdvancedMarkerElement({
         map: map,
         position: location,
-        title: "Uluru",
+        title: "Map marker",
     });
 
     markers.push(newMarker);
@@ -33,9 +33,14 @@ let addMarker = async (location) => {
 let resetMap = () => {
     markers.forEach(marker => marker.setMap(null));
     markers = [];
+    map.setCenter(position);
+    map.setZoom(7);
+    directionsRenderer.setMap(null);
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
 }
 
-let geo = async (address) => {
+let getCoordinates = async (address) => {
     const geocoder = new google.maps.Geocoder();
 
     return new Promise((resolve, reject) => {

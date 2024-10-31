@@ -1,0 +1,219 @@
+:root {
+    --primary-color: #000C2B;
+    --secondary-color: #ffffff;
+    --tertiary-color: #ffffff;
+    --accent-color: #0056b3;
+    --text-color: #333333;
+    --background-color: #f5f5f5;
+    --border-color: #dddddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.darkMode {
+    --primary-color: #1a1a2e;
+    --secondary-color: #16213e;
+    --tertiary-color: #e1e1e1;
+    --accent-color: #4a8fe7;
+    --text-color: #e1e1e1;
+    --background-color: #0f3460;
+    --border-color: #1f4287;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.clearFix {
+    clear: both;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.swp {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header h1 {
+    float: left;
+    font-size: 1.5rem;
+}
+
+header i {
+    float: right;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 0.6rem;
+}
+
+main {
+    display: flex;
+    max-width: 95%;
+    margin: 1rem auto;
+    gap: 1rem;
+}
+
+.sidebar {
+    flex: 1;
+    max-width: 400px;
+}
+
+.map-container {
+    flex: 2;
+    height: calc(100vh - 100px);
+    min-height: 400px;
+}
+
+#googleMap {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.nav-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.navBtn {
+    flex: 1;
+    padding: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.activeNavBtn {
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+}
+
+.tab-content {
+    display: none;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+}
+
+.dropdownContainer {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    display: none;
+}
+
+.dropdown {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.dropdown:hover {
+    background-color: var(--background-color);
+}
+
+#journeyTable, #departuresTable {
+    margin-top: 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    overflow-y: auto;
+    max-height: 587px;
+}
+
+#journeyTable > div, .DepartureTimeCard {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#journeyTable > div:last-child, .DepartureTimeCard:last-child {
+    border-bottom: none;
+}
+
+#journeyTable label, .DepartureTimeCard p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+#journeyTable p, .DepartureTimeCard div {
+    margin-bottom: 0.5rem;
+}
+
+#journeyTable span, .DepartureTimeCard span {
+    float: right;
+}
+
+.departureContainer {
+    display: none;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+span{
+    color: #333333;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        max-width: 100%;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+}

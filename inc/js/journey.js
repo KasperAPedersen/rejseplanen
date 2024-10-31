@@ -18,6 +18,7 @@ document.getElementById('searchSubmit').addEventListener('submit', async (event)
     event.preventDefault();
 
     try {
+        resetMap();
         const fromLocation = document.getElementById('searchFrom').value;
         const toLocation = document.getElementById('searchTo').value;
         const dateInput = document.getElementById('searchDate').value;

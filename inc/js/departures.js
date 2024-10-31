@@ -43,7 +43,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
 
     // --
 
-    let coordinates = await geo(value);
+    let coordinates = await getCoordinates(value);
     await addMarker(coordinates);
     // --
 
