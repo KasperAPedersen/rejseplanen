@@ -1,19 +1,21 @@
 // noinspection JSUnresolvedReference
 
+// Function to show the departures tab and hide other elements
 const showDepartures = e => {
     ['search', 'journeyTable', 'departuresTable'].forEach(id => document.getElementById(id).style.display = "none");
     document.getElementById('departures').style.display = "block";
     setActiveTab(e);
 };
 
+// Event listener for input in the station field to show dropdown suggestions
 document.getElementById('station').addEventListener('input', async (e) => {
     await showDropDown('station', e.target.value, true);
 });
 
+// Event listener for form submission to fetch and display departures
 document.getElementById('submitDepartures').addEventListener('submit', async (e) => {
     e.preventDefault();
     resetMap();
-
 
     const value = document.getElementById('station').value;
     let time = document.getElementById('stationTime').value;
@@ -41,12 +43,11 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
         return;
     }
 
-    // --
-
+    // Add marker to the map for the station
     let coordinates = await getCoordinates(value);
     await addMarker(coordinates);
-    // --
 
+    // Loop through departures and create elements for each departure
     for(let i = 0; i < departures.DepartureBoard.Departure.length; i++) {
         let departure = departures.DepartureBoard.Departure[i];
         let {name: departureName, direction: departureDirection, time: departureTime, rtTime: departureDelayedTime, JourneyDetailRef: departureRef, rtTrack: departureTrack} = departure;
@@ -80,6 +81,7 @@ document.getElementById('submitDepartures').addEventListener('submit', async (e)
     container.style.display = 'block';
 });
 
+// Function to fetch departures data based on station ID and time
 const getDepartures = async (id, time) => {
     const res = await fetch(`${base}departureBoard?id=${id}&time=${time}&useTog=1&useBus=1&format=json`);
     if (!res.ok) {

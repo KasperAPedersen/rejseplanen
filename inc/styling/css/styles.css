@@ -1,3 +1,4 @@
+/* Define color variables for light and dark modes */
 :root {
     --primary-color: #000C2B;
     --secondary-color: #ffffff;
@@ -20,12 +21,14 @@
     --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
+/* Reset default margin and padding for all elements */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Style for the body element */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
@@ -34,10 +37,12 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Clearfix utility class */
 .clearFix {
     clear: both;
 }
 
+/* Style for the header element */
 header {
     background-color: var(--primary-color);
     color: var(--tertiary-color);
@@ -45,17 +50,20 @@ header {
     box-shadow: 0 2px 4px var(--shadow-color);
 }
 
+/* Style for the container inside the header */
 .swp {
     max-width: 95%;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
+/* Style for the header title */
 header h1 {
     float: left;
     font-size: 1.5rem;
 }
 
+/* Style for the dark mode toggle icon */
 header i {
     float: right;
     font-size: 1.2rem;
@@ -63,6 +71,7 @@ header i {
     margin-top: 0.6rem;
 }
 
+/* Style for the main content area */
 main {
     display: flex;
     max-width: 95%;
@@ -70,17 +79,20 @@ main {
     gap: 1rem;
 }
 
+/* Style for the sidebar */
 .sidebar {
     flex: 1;
     max-width: 400px;
 }
 
+/* Style for the map container */
 .map-container {
     flex: 2;
     height: calc(100vh - 100px);
     min-height: 400px;
 }
 
+/* Style for the Google Map */
 #googleMap {
     width: 100%;
     height: 100%;
@@ -88,11 +100,13 @@ main {
     box-shadow: 0 2px 4px var(--shadow-color);
 }
 
+/* Style for the navigation tabs */
 .nav-tabs {
     display: flex;
     margin-bottom: 1rem;
 }
 
+/* Style for the navigation buttons */
 .navBtn {
     flex: 1;
     padding: 0.5rem;
@@ -105,11 +119,13 @@ main {
     font-weight: normal;
 }
 
+/* Style for the active navigation button */
 .activeNavBtn {
     background-color: var(--primary-color);
     color: var(--tertiary-color);
 }
 
+/* Style for the tab content */
 .tab-content {
     display: none;
     background-color: var(--secondary-color);
@@ -118,10 +134,12 @@ main {
     box-shadow: 0 2px 4px var(--shadow-color);
 }
 
+/* Style for the active tab content */
 .tab-content.active {
     display: block;
 }
 
+/* Style for form inputs and buttons */
 form input, form button {
     width: 100%;
     padding: 0.5rem;
@@ -131,6 +149,7 @@ form input, form button {
     font-size: 1rem;
 }
 
+/* Style for form buttons */
 form button {
     background-color: var(--accent-color);
     color: var(--secondary-color);
@@ -139,11 +158,13 @@ form button {
     transition: background-color 0.3s;
 }
 
+/* Hover effect for form buttons */
 form button:hover {
     color: var(--tertiary-color);
     background-color: var(--primary-color);
 }
 
+/* Style for dropdown containers */
 .dropdownContainer {
     max-height: 200px;
     overflow-y: auto;
@@ -153,15 +174,18 @@ form button:hover {
     display: none;
 }
 
+/* Style for dropdown items */
 .dropdown {
     padding: 0.5rem;
     cursor: pointer;
 }
 
+/* Hover effect for dropdown items */
 .dropdown:hover {
     background-color: var(--background-color);
 }
 
+/* Style for the journey and departures tables */
 #journeyTable, #departuresTable {
     margin-top: 1rem;
     background-color: var(--secondary-color);
@@ -171,39 +195,47 @@ form button:hover {
     max-height: 587px;
 }
 
+/* Style for individual journey and departure cards */
 #journeyTable > div, .DepartureTimeCard {
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Remove border from the last card */
 #journeyTable > div:last-child, .DepartureTimeCard:last-child {
     border-bottom: none;
 }
 
+/* Style for labels and paragraphs inside cards */
 #journeyTable label, .DepartureTimeCard p {
     font-size: 0.9rem;
     color: var(--text-color);
     opacity: 0.7;
 }
 
+/* Style for paragraphs and divs inside cards */
 #journeyTable p, .DepartureTimeCard div {
     margin-bottom: 0.5rem;
 }
 
+/* Style for spans inside cards */
 #journeyTable span, .DepartureTimeCard span {
     float: right;
 }
 
+/* Style for the departure container */
 .departureContainer {
     display: none;
     padding-top: 0.5rem;
     border-top: 1px solid var(--border-color);
 }
 
-span{
+/* Style for spans */
+span {
     color: #333333;
 }
 
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     main {
         flex-direction: column;

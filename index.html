@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rejseplanlæggeren</title>
+    <!-- Link to external CSS stylesheet -->
     <link rel="stylesheet" href="inc/styling/css/styles.css">
+    <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/d7cb81324e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
     <div class="swp">
         <h1>Rejseplanlæggeren</h1>
+        <!-- Dark mode toggle icon -->
         <i class="fa fa-moon-o" aria-hidden="true" onclick="toggleDarkMode();"></i>
         <div class="clearFix"></div>
     </div>
@@ -19,10 +23,12 @@
 <main>
     <div class="sidebar">
         <div class="nav-tabs">
+            <!-- Navigation buttons for different tabs -->
             <h2 class="navBtn activeNavBtn" onclick="showSearch(this);">Find din rejse</h2>
             <h2 class="navBtn" onclick="showDepartures(this);">Afgangstavler</h2>
             <div class="clearFix"></div>
         </div>
+        <!-- Search tab content -->
         <div id="search" class="tab-content active">
             <form id="searchSubmit">
                 <input type="date" id="searchDate">
@@ -35,6 +41,7 @@
                 <div class="clearFix"></div>
             </form>
         </div>
+        <!-- Departures tab content -->
         <div id="departures" class="tab-content">
             <form id="submitDepartures">
                 <input type="time" id="stationTime">
@@ -44,17 +51,21 @@
                 <div class="clearFix"></div>
             </form>
         </div>
+        <!-- Containers for displaying search results -->
         <div id="journeyTable"></div>
         <div id="departuresTable"></div>
     </div>
+    <!-- Container for the map -->
     <div class="map-container">
         <div id="googleMap"></div>
     </div>
 </main>
+<!-- Link to external JavaScript files -->
 <script src="inc/js/common.js"></script>
 <script src="inc/js/map.js"></script>
 <script src="inc/js/journey.js"></script>
 <script src="inc/js/departures.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=APIKEYHERE&loading=async&callback=initMap" async defer></script>
+<!-- Google Maps API script with callback to initialize the map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYRTaShE43_LuuEsUarxa2BWiFOfjKNQQ&loading=async&callback=initMap" async defer></script>
 </body>
 </html>

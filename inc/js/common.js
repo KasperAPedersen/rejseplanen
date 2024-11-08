@@ -1,7 +1,8 @@
 // noinspection JSUnresolvedReference
-let darkMode = false;
-let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/";
+let darkMode = false; // Flag to track dark mode state
+let base = "https://xmlopen.rejseplanen.dk/bin/rest.exe/"; // Base URL for API requests
 
+// Function to fetch location data based on user input
 const getLocationData = async (userInput) => {
     const res = await fetch(`${base}location?input=${userInput}&format=json`);
     if (!res.ok) {
@@ -11,6 +12,7 @@ const getLocationData = async (userInput) => {
     return res.json();
 };
 
+// Function to fetch direction data between two locations
 let getDirectionData = async (from, to) => {
     const res = await fetch(`${base}trip?originId=${from}&destId=${to}&format=json`);
     if (!res.ok) {
@@ -20,6 +22,7 @@ let getDirectionData = async (from, to) => {
     return res.json();
 }
 
+// Function to fetch train stops data based on a reference URL
 const getTrainStopsData = async (ref) => {
     const res = await fetch(ref);
     if (!res.ok) {
@@ -29,11 +32,13 @@ const getTrainStopsData = async (ref) => {
     return await res.json();
 }
 
+// Function to set the active tab and update its class
 let setActiveTab = (e) => {
     document.querySelectorAll('h2').forEach(element => element.className = "navBtn");
     e.className = `activeNavBtn navBtn ${darkMode ? 'darkMode' : ''}`;
 };
 
+// Function to show dropdown suggestions based on user input
 let showDropDown = async (container, value, useStopLocation = false) => {
     let parent = document.getElementById(`${container}Container`);
 
@@ -59,6 +64,7 @@ let showDropDown = async (container, value, useStopLocation = false) => {
     });
 }
 
+// Function to set the time on a date object
 let setTime = (date, time) => {
     let [hours, minutes] = time.split(':').map(Number);
     date.setHours(hours);
@@ -66,6 +72,7 @@ let setTime = (date, time) => {
     return date;
 }
 
+// Function to set the date on a date object
 let setDate = (date, day) => {
     let [year, month, dayOfMonth] = day.split('-').map(Number);
     date.setFullYear(year);
@@ -74,6 +81,7 @@ let setDate = (date, day) => {
     return date;
 }
 
+// Function to get the appropriate icon based on the mode of transport
 let getIcon = (mode) => {
     switch(mode.toUpperCase()) {
         case 'WALKING':
@@ -92,6 +100,7 @@ let getIcon = (mode) => {
     }
 }
 
+// Function to toggle dark mode on and off
 let toggleDarkMode = () => {
     darkMode = !darkMode;
     let body = document.body;

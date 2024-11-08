@@ -1,19 +1,23 @@
 // noinspection JSUnresolvedReference
 
+// Function to show the search tab and hide other elements
 const showSearch = e => {
     ['departures', 'journeyTable', 'departuresTable'].forEach(id => document.getElementById(id).style.display = "none");
     document.getElementById('search').style.display = "block";
     setActiveTab(e);
 };
 
+// Event listener for input in the 'searchFrom' field to show dropdown suggestions
 document.getElementById('searchFrom').addEventListener('input', async (e) => {
     await showDropDown('searchFrom', e.target.value);
 });
 
+// Event listener for input in the 'searchTo' field to show dropdown suggestions
 document.getElementById('searchTo').addEventListener('input', async (e) => {
     await showDropDown('searchTo', e.target.value);
 });
 
+// Event listener for form submission to fetch and display journey directions
 document.getElementById('searchSubmit').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -41,6 +45,7 @@ document.getElementById('searchSubmit').addEventListener('submit', async (event)
     }
 });
 
+// Function to display text directions in the journey table
 let showTextDirections = (directions) => {
     let steps = directions.routes[0].legs[0].steps;
     let journeyContainer = document.getElementById('journeyTable');
@@ -74,6 +79,7 @@ let showTextDirections = (directions) => {
     });
 }
 
+// Function to get directions from the Google Maps API
 const getDirections = async (origin, destination, date) => {
     return new Promise((resolve, reject) => {
         if (!directionsService) {
