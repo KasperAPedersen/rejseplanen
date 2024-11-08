@@ -35,6 +35,7 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     transition: background-color 0.3s, color 0.3s;
+    overflow: hidden;
 }
 
 /* Clearfix utility class */
